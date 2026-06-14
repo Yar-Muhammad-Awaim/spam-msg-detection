@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 
-BASE_URL = "http://spam-classifier-backend:80"
+BASE_URL = "http://backend:80"
 
 st.set_page_config(page_title="SMS Spam Classifier", layout="centered")
 

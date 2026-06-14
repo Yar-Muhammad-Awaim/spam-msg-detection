@@ -1,23 +1,36 @@
 services:
-  spam-classifier-backend:
+  backend:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: "spam-classifier-backend"
+    container_name: "backend"
     ports:
       - "80:80"
 
     restart: unless-stopped
 
-  spam-classifier-frontend:
+  frontend:
     build:
       context: .
       dockerfile: Dockerfile
 
-    container_name: "spam-classifier-frontend"
+    container_name: "frontend"
     ports:
       - "8502:8502"
 
     command: ["python", "-m", "streamlit", "run", "app/frontend.py", "--server.port=8502", "--server.address=0.0.0.0"]
     depends_on:
-      - spam-classifier-backend
+      - backend
+
+  ngrok_gateway:
+    image: ngrok/ngrok:latest
+    container_name: "ngrok_gateway"
+    command: 
+      - "http" 
+      - "frontend:8502"
+    restart: unless-stopped
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTH_TOKEN}
+    depends_on:
+      - frontend
+

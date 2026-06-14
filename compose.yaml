@@ -1,0 +1,23 @@
+services:
+  spam-classifier-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "spam-classifier-backend"
+    ports:
+      - "80:80"
+
+    restart: unless-stopped
+
+  spam-classifier-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: "spam-classifier-frontend"
+    ports:
+      - "8502:8502"
+
+    command: ["python", "-m", "streamlit", "run", "app/frontend.py", "--server.port=8502", "--server.address=0.0.0.0"]
+    depends_on:
+      - spam-classifier-backend

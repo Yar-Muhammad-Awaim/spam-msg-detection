@@ -10,4 +10,6 @@ COPY . /code/
 
 EXPOSE 80
 
+ENV PYTHONPATH=/code
+
 CMD [ "fastapi", "run", "app/main.py", "--port", "80" ]

@@ -12,4 +12,6 @@ EXPOSE 80
 
 ENV PYTHONPATH=/code
 
+RUN python -m nltk.downloader stopwords punkt punkt_tab wordnet
+
 CMD [ "fastapi", "run", "app/main.py", "--port", "80" ]

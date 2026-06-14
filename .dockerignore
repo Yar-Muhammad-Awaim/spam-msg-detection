@@ -1,0 +1,25 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+.venv
+venv
+env
+
+# IDE logs
+*.log
+*.temp
+
+# Git repository
+.git
+*.gitignore
+
+# Local Data (Not needed at the time of serving)
+data/spam.csv
+
+# IDE files
+.vscode/
+.idea/
+*.swp

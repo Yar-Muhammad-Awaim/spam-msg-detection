@@ -6,7 +6,6 @@ import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from textblob import TextBlob
 
 from utils.contractions import common_appos
 from utils.slangs import common_slangs
@@ -49,17 +48,6 @@ def lemmatize_tokens(tokens: list[str]) -> list[str]:
     return lemmatized_tokens
 
 
-def correct_spellings(tokens: list[str]) -> str:
-    msg = ""
-    for token in tokens:
-        msg += token
-
-    text_blob = TextBlob(msg)
-    text_blob = text_blob.correct()
-
-    return text_blob
-
-
 def remove_empty_tokens(tokens: list[str]) -> list[str]:
     return [token for token in tokens if len(token.strip()) > 0]
 
@@ -100,10 +88,6 @@ def pre_process_msg(df: pd.DataFrame, column: str) -> pd.DataFrame:
 
     # Merge the tokens into strings
     df[column] = df[column].apply(lambda tokens: " ".join(tokens))
-
-    # Correct spellings !!! TAKES A LOT OF TIME SO COMMENTING THIS.
-    # print("Correcting spellings, it may take a while.")
-    # df[column] = df[column].apply(correct_spellings)
 
     return df
 

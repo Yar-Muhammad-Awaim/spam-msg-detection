@@ -23,3 +23,6 @@ data/spam.csv
 .vscode/
 .idea/
 *.swp
+
+# Ruff cache 
+.ruff_cache/

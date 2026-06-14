@@ -30,7 +30,7 @@ services:
       - "frontend:8502"
     restart: unless-stopped
     environment:
-      - NGROK_AUTHTOKEN=${NGROK_AUTH_TOKEN}
+      - NGROK_AUTH_TOKEN=${NGROK_AUTH_TOKEN}
     depends_on:
       - frontend
 

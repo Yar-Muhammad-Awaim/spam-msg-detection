@@ -22,15 +22,15 @@ services:
     depends_on:
       - backend
 
-  ngrok_gateway:
-    image: ngrok/ngrok:latest
-    container_name: "ngrok_gateway"
-    command: 
-      - "http" 
-      - "frontend:8502"
-    restart: unless-stopped
-    environment:
-      - NGROK_AUTH_TOKEN=${NGROK_AUTH_TOKEN}
-    depends_on:
-      - frontend
+  # ngrok_gateway:
+  #   image: ngrok/ngrok:latest
+  #   container_name: "ngrok_gateway"
+  #   command: 
+  #     - "http" 
+  #     - "frontend:8502"
+  #   restart: unless-stopped
+  #   environment:
+  #     - NGROK_AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+  #   depends_on:
+  #     - frontend
 

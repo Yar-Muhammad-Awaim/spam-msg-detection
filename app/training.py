@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
 
-model = MultinomialNB()
+model = MultinomialNB(alpha=1.0)
 
 le = LabelEncoder()
 
